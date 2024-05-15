@@ -1,12 +1,12 @@
-# Open JDK
+# Eclipse TemurinX
 
 ## 1. 简介
 
-集成了Open JDK的Alpine操作系统
+集成了Eclipse Temurin的操作系统
 
 ## 2. 特性
 
-1. OpenJDK 8-19
+1. Eclipse Temurin 8/17/21
 2. TZ=Asia/Shanghai
 3. C.UTF-8
 4. curl和telnet
@@ -15,27 +15,19 @@
 ## 3. 编译并上传镜像
 
 ```sh
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:8 --build-arg VERSION=8 --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:8-alpine --build-arg VERSION=8-alpine --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:11 --build-arg VERSION=11 --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
-# openjdk:18-alpine的原镜像不支持arm
-docker buildx build --platform linux/amd64 -t nnzbz/openjdk:18-alpine --build-arg VERSION=18-alpine --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345  --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:18 --build-arg VERSION=18 --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345  --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
-# openjdk:19-alpine的原镜像不支持arm
-docker buildx build --platform linux/amd64 -t nnzbz/openjdk:19-alpine --build-arg VERSION=19-alpine --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:19 --build-arg VERSION=19 --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
-# 目前没有openjdk:20-alpine的原镜像
-# openjdk:20-alpine的原镜像不支持arm
-#docker buildx build --platform linux/amd64 -t nnzbz/openjdk:20-alpine --build-arg VERSION=20-alpine --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345 . --push
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:20 --build-arg VERSION=20 --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345 . --push
-# latest
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:latest --build-arg VERSION=8-alpine --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/temurinx:8 --build-arg VERSION=8 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/temurinx:8-alpine --build-arg VERSION=8 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/temurinx:17 --build-arg VERSION=17 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/temurinx:17-alpine --build-arg VERSION=17 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/temurinx:21 --build-arg VERSION=21 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/temurinx:21-alpine --build-arg VERSION=21 . --push
 ```
 
 ## 4. 创建并运行容器
 
 ```sh
-docker run --rm -it --name 容器名称 nnzbz/openjdk
+docker run --rm -it --name <容器名称> nnzbz/temurinx:8
+docker run --rm -it --name <容器名称> nnzbz/temurinx:8-alpine
 ```
 
 ## 5. 如果要运行jstatd监控
