@@ -28,9 +28,8 @@ getOs() {
 os=$(getOs)
 case $os in
 debian)
-    apt-get update
-    # 安装vi，telnet
-    apt-get install vim telnet -y
+    # 安装软件vim/telnet/ping/ip addr/
+    apt-get update && apt-get install vim telnet iputils-ping iproute2 -y
     TZ=Asia/Shanghai
     DEBIAN_FRONTEND=noninteractive
     ln -fs /usr/share/zoneinfo/${TZ} /etc/localtime
@@ -39,9 +38,8 @@ debian)
     rm -rf /var/lib/apt/lists/*
     ;;
 ubuntu)
-    apt-get update
-    # 安装vi，telnet
-    apt-get install vim telnet -y
+    # 安装软件
+    apt-get update && apt-get install vim telnet iputils-ping -y
     # 设置时区
     ln -sf /usr/share/zoneinfo/Asia/ShangHai /etc/localtime
     echo "Asia/Shanghai" > /etc/timezone
@@ -76,13 +74,8 @@ alpine)
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
     echo "Asia/Shanghai" > /etc/timezone
     apk del tzdata
-    # 安装bash
-    apk add --no-cache bash bash-doc bash-completion
     apk add curl
-    # 安装telnet
-    apk add busybox-extras
-    # 安装vi
-    apk -U add vim
+    apk add busybox-extras # telnet
     apk -U add openssl
     # 删除缓存
     rm -rf /var/cache/apk/*
