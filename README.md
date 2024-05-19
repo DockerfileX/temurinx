@@ -6,11 +6,12 @@
 
 ## 2. 特性
 
-1. Eclipse Temurin 8/17/21
-2. TZ=Asia/Shanghai
-3. C.UTF-8
-4. curl和telnet
-5. arthas(在/usr/local/arthas目录下)
+1. Ubuntu/Alpine
+2. Eclipse Temurin 8/17/21
+3. TZ=Asia/Shanghai
+4. C.UTF-8
+5. curl和telnet
+6. arthas(在/usr/local/arthas目录下)
 
 ## 3. 编译并上传镜像
 
